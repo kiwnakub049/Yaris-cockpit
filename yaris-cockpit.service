@@ -1,0 +1,44 @@
+[Unit]
+Description=Yaris Cockpit 2.0 - Web UI Auto-Start
+After=network.target graphical.target multi-user.target
+Wants=graphical.target
+
+[Service]
+Type=simple
+User=flick
+Group=flick
+WorkingDirectory=/home/flick/yaris-cockpit
+
+# Run startup script
+ExecStart=/home/flick/yaris-cockpit/start.sh
+
+# Performance optimization
+Nice=-10
+IOSchedulingClass=realtime
+IOSchedulingPriority=0
+CPUSchedulingPolicy=fifo
+CPUSchedulingPriority=99
+LimitNOFILE=65536
+LimitNPROC=4096
+
+# Restart on failure
+Restart=on-failure
+RestartSec=5
+
+# Kill process group on exit (kills all child processes)
+KillMode=control-group
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+# GUI environment (will use virtual display if no physical display)
+Environment="DISPLAY=:0"
+Environment="XAUTHORITY=/home/flick/.Xauthority"
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=yaris-cockpit
+
+[Install]
+WantedBy=graphical.target
+

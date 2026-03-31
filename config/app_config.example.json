@@ -1,0 +1,49 @@
+{
+  "obd": {
+    "port": "COM4",
+    "baudrate": 38400,
+    "protocol": "AUTO",
+    "enabled": true,
+    "timeout": 3
+  },
+  "gps": {
+    "enabled": false,
+    "port": "COM5",
+    "baudrate": 9600
+  },
+  "display": {
+    "width": 1280,
+    "height": 720,
+    "fullscreen": false,
+    "fps_target": 60
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "workers": 4,
+    "log_level": "info"
+  },
+  "theme": {
+    "mode": "dark",
+    "accent_color": "#3B82F6",
+    "glass_opacity": 0.1,
+    "blur_strength": "2xl"
+  },
+  "performance": {
+    "gpu_acceleration": true,
+    "multi_threading": true,
+    "cache_enabled": true,
+    "max_memory_mb": 512
+  },
+  "hardware": {
+    "carplay": {
+      "enabled": false,
+      "device_path": "/dev/video0"
+    },
+    "bluetooth": {
+      "enabled": true,
+      "auto_connect": true,
+      "device_name": "Yaris Cockpit"
+    }
+  }
+}

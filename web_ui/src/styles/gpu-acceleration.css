@@ -1,0 +1,130 @@
+/* GPU Acceleration Utilities */
+/* Force hardware acceleration for all major components */
+
+/* Global GPU acceleration */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Force GPU layer for animations */
+.gpu-accelerated,
+[class*="motion-"],
+[class*="animate-"],
+[class*="transition-"] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Optimize scrolling */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto {
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+  transform: translateZ(0);
+}
+
+/* Optimize backdrop blur */
+.backdrop-blur-xl,
+.backdrop-blur-2xl,
+.backdrop-blur-3xl,
+[class*="backdrop-blur"] {
+  will-change: backdrop-filter;
+  -webkit-backdrop-filter: var(--tw-backdrop-blur);
+  isolation: isolate;
+}
+
+/* Optimize gradients */
+[class*="bg-gradient"],
+[class*="from-"],
+[class*="to-"] {
+  will-change: background;
+  backface-visibility: hidden;
+}
+
+/* Motion components optimization */
+[data-framer-motion] {
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Cards and interactive elements */
+.rounded-2xl,
+.rounded-3xl,
+.rounded-xl {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Shadow optimization */
+.shadow-xl,
+.shadow-2xl,
+[class*="shadow-"] {
+  will-change: box-shadow;
+}
+
+/* Disable unnecessary repaints */
+img,
+video,
+canvas {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
+}
+
+/* Optimize text rendering */
+h1, h2, h3, h4, h5, h6, p, span {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Disable outline for performance */
+*:focus {
+  outline: none;
+}
+
+/* Optimize gauge/chart animations */
+circle,
+path,
+svg {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Button interactions */
+button,
+a,
+[role="button"] {
+  will-change: transform, background-color;
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Grid optimization */
+.grid {
+  will-change: contents;
+  backface-visibility: hidden;
+}
+
+/* Prevent layout shift */
+.layout-stable {
+  contain: layout style paint;
+}
+
+/* Performance hints for browser */
+.composite-layer {
+  transform: translateZ(0);
+  will-change: transform;
+  contain: layout style paint;
+}

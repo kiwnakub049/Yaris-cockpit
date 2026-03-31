@@ -1,0 +1,8 @@
+PyQt5==5.15.9
+obd==0.0.110
+gps3==0.33.3
+pulsectl==23.5.0
+paho-mqtt==1.6.1
+Pillow==10.0.1
+numpy==1.24.3
+requests==2.31.0
