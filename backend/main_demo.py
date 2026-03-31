@@ -112,7 +112,8 @@ async def get_gps():
         "lon": demo_gen.lon,
         "speed": demo_gen.gps_speed,
         "altitude": random.randint(0, 100),
-        "satellites": random.randint(5, 12)
+        "satellites": random.randint(5, 12),
+        "accuracy": random.uniform(1.0, 5.0)
     }
 
 @app.get("/api/bluetooth/status")
@@ -180,38 +181,6 @@ if __name__ == "__main__":
     print("🎨 Frontend: http://localhost:3000 (dev) or http://0.0.0.0:8000 (prod)")
     print("📱 For Android: Use http://localhost:3000 or http://[device-ip]:3000")
     uvicorn.run(app, host="0.0.0.0", port=8000)
-        "lon": demo_gen.lon,
-        "speed": demo_gen.gps_speed,
-        "altitude": random.randint(0, 100),
-        "satellites": random.randint(5, 12),
-        "accuracy": random.uniform(1.0, 5.0)
-    }
-
-@app.get("/api/bluetooth/status")
-async def get_bluetooth_status():
-    return {
-        "connected": False,
-        "device": None,
-        "status": "demo_mode"
-    }
-
-@app.get("/api/carplay/status")
-async def get_carplay_status():
-    return {
-        "connected": False,
-        "device": None,
-        "status": "demo_mode"
-    }
-
-@app.get("/api/system/status")
-async def get_system_status():
-    return {
-        "cpu_temp": random.randint(40, 70),
-        "memory_usage": random.randint(30, 80),
-        "disk_usage": random.randint(20, 60),
-        "uptime": time.time(),
-        "platform": "android_demo"
-    }
 
 @app.websocket("/ws/sensors")
 async def websocket_sensors(websocket: WebSocket):
